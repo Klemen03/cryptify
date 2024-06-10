@@ -1,6 +1,8 @@
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from './components/theme-provider';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import CryptoContext from './components/context';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -16,7 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <CryptoContext>
+          <ThemeProvider>{children}</ThemeProvider>
+        </CryptoContext>
       </body>
     </html>
   );
