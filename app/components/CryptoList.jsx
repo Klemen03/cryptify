@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Link from 'next/link';
 
 function CryptoList() {
   const { currency, symbol } = useContext(Crypto);
@@ -58,32 +59,36 @@ function CryptoList() {
         <TableBody>
           {coinTable.map((coin) => (
             <TableRow key={coin.id}>
-              <TableCell className="font-medium">
-                <div className="flex">
-                  <img
-                    className="w-[50px] h-[50px]"
-                    src={coin.image}
-                    alt={coin.name}
-                  />
-                  <div className="flex flex-col pl-3 mr-14">
-                    <h1 className="uppercase tracking-wider">{coin.symbol}</h1>
-                    <p className="text-sm">{coin.name}</p>
+              <Link href={`/cryptocurrencies/${coin.id}`}>
+                <TableCell className="font-medium">
+                  <div className="flex">
+                    <img
+                      className="w-[50px] h-[50px]"
+                      src={coin.image}
+                      alt={coin.name}
+                    />
+                    <div className="flex flex-col pl-3 mr-14">
+                      <h1 className="uppercase tracking-wider">
+                        {coin.symbol}
+                      </h1>
+                      <p className="text-sm">{coin.name}</p>
+                    </div>
                   </div>
-                </div>
-              </TableCell>
-              <TableCell>
-                {symbol}
-                {coin.current_price.toLocaleString()}
-              </TableCell>
-              <TableCell>
-                {coin.price_change_percentage_24h < 0 ? '-' : '+'}
-                {Math.abs(coin.price_change_percentage_24h).toFixed(2)}
-                {'%'}
-              </TableCell>
-              <TableCell className="text-right">
-                {coin.market_cap.toLocaleString()}
-                {'M'}
-              </TableCell>
+                </TableCell>
+                <TableCell>
+                  {symbol}
+                  {coin.current_price.toLocaleString()}
+                </TableCell>
+                <TableCell>
+                  {coin.price_change_percentage_24h < 0 ? '-' : '+'}
+                  {Math.abs(coin.price_change_percentage_24h).toFixed(2)}
+                  {'%'}
+                </TableCell>
+                <TableCell className="text-right">
+                  {coin.market_cap.toLocaleString()}
+                  {'M'}
+                </TableCell>
+              </Link>
             </TableRow>
           ))}
         </TableBody>
