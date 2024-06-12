@@ -5,6 +5,7 @@ import AliceCarousel from 'react-alice-carousel';
 import { Crypto } from './context';
 import { trendingCoins } from '../config/api';
 import Link from 'next/link';
+import axios from 'axios';
 // import Image from 'next/image';
 
 export function numberWithCommas(x) {
@@ -15,19 +16,18 @@ function Carousel() {
   const { currency, symbol } = React.useContext(Crypto);
   const [trending, setTrending] = useState([]);
 
+  const fetchTrendingCoins = async () => {
+    const { data } = await axios.get(trendingCoins(currency));
+    setTrending(data);
+  };
+
   useEffect(() => {
-    const FetchTrendingCoins = async () => {
-      const response = await fetch(trendingCoins(currency));
-      const results = await response.json();
-
-      setTrending(results);
-    };
-
-    FetchTrendingCoins();
+    fetchTrendingCoins();
   }, [currency]);
 
   const items = trending.map((coin) => {
-    let priceChange = coin.price_change_percentage_24h;
+    let priceChange = Math.abs(coin.price_change_percentage_24h.toFixed(2));
+    let isPriceChangePositive = priceChange < 0;
 
     return (
       <Link
@@ -39,9 +39,12 @@ function Carousel() {
         <div className="flex flex-row gap-x-2 items-center">
           <h1 className="font-semibold text-xl uppercase">{coin?.symbol}</h1>
           <p
-            className={`${priceChange < 0 ? 'text-red-500' : 'text-green-500'}`}
+            className={`${
+              isPriceChangePositive ? 'text-red-500' : 'text-green-500'
+            }`}
           >
-            {coin.price_change_percentage_24h.toFixed(2)}%
+            {isPriceChangePositive ? '-' : '+'}
+            {priceChange}%
           </p>
         </div>
         <div className="text-lg flex flex-row items-center gap-1">
