@@ -59,7 +59,7 @@ function CryptoList() {
         <TableBody>
           {coinTable.map((coin) => (
             <TableRow key={coin.id}>
-              <Link href={`/cryptocurrencies/${coin.id}`}>
+              <Link id={coin.id} href={`/cryptocurrencies/${coin.id}`}>
                 <TableCell className="font-medium">
                   <div className="flex">
                     <img

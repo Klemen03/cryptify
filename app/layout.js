@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from './components/theme-provider';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import CryptoContext from './components/context';
+import Header from './components/Header';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={montserrat.className}>
         <CryptoContext>
+          <Header />
           <ThemeProvider>{children}</ThemeProvider>
         </CryptoContext>
       </body>
