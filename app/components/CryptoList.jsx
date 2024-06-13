@@ -47,7 +47,7 @@ function CryptoList() {
         placeholder="Search For a Crypto Currency..."
         type="text"
         onChange={(e) => setSearch(e.target.value)}
-        className="px-5 py-4 my-7 max-w-5xl w-full mx-auto outline-none border border-orange-500 rounded-full"
+        className="px-5 py-4 my-7 max-w-5xl w-full mx-auto outline-none border-2 dark:border-gray-500 dark:focus:border-amber-400 rounded-full dark:placeholder:focus:text-orange-200 focus:shadow-md dark:focus:shadow-orange-700 placeholder:tracking-wider transition-shadow-color duration-300 border-gray-200 focus:border-gray-800 focus:placeholder:text-gray-800 focus:shadow-gray-400"
       />
       <Table className="max-w-7xl mx-auto text-xl">
         <TableCaption>A list of your recent invoices.</TableCaption>
