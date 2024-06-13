@@ -36,10 +36,24 @@ function CryptoList() {
     fetchCoins();
   }, [currency]);
 
-  console.log(search);
+  const searchedCoins = coinTable.filter(
+    (coin) =>
+      coin.name.toLowerCase().includes(search) ||
+      coin.symbol.toLowerCase().includes(search)
+  );
+
+  // const handleSearch = () => {
+  //   return coinTable.filter(
+  //     (coin) =>
+  //       coin.name.toLowerCase().includes(search) ||
+  //       coin.symbol.toLowerCase().includes(search)
+  //   );
+  // };
+
+  // console.log(searchedCoins);
 
   return (
-    <div className="flex flex-col pt-7 items-center dark:bg-gray-900">
+    <div className="flex flex-col h-screen pt-7 items-center dark:bg-gray-900">
       <h1 className="text-4xl text-amber-600   dark:text-yellow-300 font-medium tracking-wide">
         Cryptocurrencies by Market Cap
       </h1>
@@ -60,7 +74,12 @@ function CryptoList() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {coinTable.map((coin) => (
+          {/* {searchedCoins.map((coin) => {
+            <TableRow key={coin.id}>
+              <TableCell>{coin.name}</TableCell>
+            </TableRow>;
+          })} */}
+          {searchedCoins.map((coin) => (
             <TableRow key={coin.id}>
               <Link id={coin.id} href={`/cryptocurrencies/${coin.id}`}>
                 <TableCell className="font-medium">
