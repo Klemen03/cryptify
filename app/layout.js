@@ -20,8 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={montserrat.className}>
         <CryptoContext>
-          <Header />
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <Header />
+            {children}
+          </ThemeProvider>
         </CryptoContext>
       </body>
     </html>

@@ -13,12 +13,14 @@ function CryptocurrenciesPage() {
   let id = 'bitcoin';
 
   const fetchSingleCoin = async () => {
-    const { data } = await axios.get(singleCoin(id));
-
-    setCoin(data);
+    try {
+      const { data } = await axios.get(singleCoin(id));
+      setCoin(data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  console.log(coin);
   useEffect(() => {
     fetchSingleCoin();
   }, [currency]);

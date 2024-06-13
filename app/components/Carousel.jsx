@@ -17,8 +17,12 @@ function Carousel() {
   const [trending, setTrending] = useState([]);
 
   const fetchTrendingCoins = async () => {
-    const { data } = await axios.get(trendingCoins(currency));
-    setTrending(data);
+    try {
+      const { data } = await axios.get(trendingCoins(currency));
+      setTrending(data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
@@ -26,7 +30,7 @@ function Carousel() {
   }, [currency]);
 
   const items = trending.map((coin) => {
-    let priceChange = Math.abs(coin.price_change_percentage_24h.toFixed(2));
+    let priceChange = coin.price_change_percentage_24h.toFixed(2);
     let isPriceChangePositive = priceChange < 0;
 
     return (
@@ -38,13 +42,9 @@ function Carousel() {
         <img src={coin.image} alt={coin.name} width={80} height={80} />
         <div className="flex flex-row gap-x-2 items-center">
           <h1 className="font-semibold text-xl uppercase">{coin?.symbol}</h1>
-          <p
-            className={`${
-              isPriceChangePositive ? 'text-red-500' : 'text-green-500'
-            }`}
-          >
+          <p className={`${priceChange ? 'text-red-500' : 'text-green-500'}`}>
             {isPriceChangePositive ? '-' : '+'}
-            {priceChange}%
+            {Math.abs(priceChange)}%
           </p>
         </div>
         <div className="text-lg flex flex-row items-center gap-1">

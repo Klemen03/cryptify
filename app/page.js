@@ -6,7 +6,6 @@ import CryptoList from './components/CryptoList';
 function page() {
   return (
     <>
-      <Header />
       <Banner />
       <CryptoList />
     </>

@@ -17,16 +17,19 @@ import Link from 'next/link';
 
 function CryptoList() {
   const { currency, symbol } = useContext(Crypto);
-
   const [loading, setLoading] = useState(false);
   const [coinTable, setCoinTable] = useState([]);
   const [search, setSearch] = useState('');
 
   const fetchCoins = async () => {
     setLoading(true);
-    const { data } = await axios.get(coinList(currency));
-    setLoading(false);
-    setCoinTable(data);
+    try {
+      const { data } = await axios.get(coinList(currency));
+      setLoading(false);
+      setCoinTable(data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {
