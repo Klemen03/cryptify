@@ -3,7 +3,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { singleCoin } from '@/app/config/api';
 import { Crypto } from '@/app/components/context';
 import axios from 'axios';
-
 import { Button } from '@/components/ui/button';
 
 function CryptocurrenciesPage({ params }) {
@@ -21,8 +20,6 @@ function CryptocurrenciesPage({ params }) {
     }
   };
 
-  console.log(coin);
-
   useEffect(() => {
     fetchSingleCoin();
   }, [currency]);
@@ -37,9 +34,6 @@ function CryptocurrenciesPage({ params }) {
   const coinDescription = removeHtmlTags(coin.description?.en);
 
   const slicedCoinDescription = coinDescription?.split('.');
-
-  console.log(slicedCoinDescription);
-  console.log(coinDescription);
 
   return (
     <div className="flex flex-col lg:flex-row">

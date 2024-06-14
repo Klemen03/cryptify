@@ -6,9 +6,7 @@ import axios from 'axios';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -42,6 +40,10 @@ function CryptoList() {
       coin.symbol.toLowerCase().includes(search)
   );
 
+  // const zeroState = () => {
+  //   if (searchedCoins.length === 0) return false;
+  //   else return true;
+  // };
   // const handleSearch = () => {
   //   return coinTable.filter(
   //     (coin) =>
@@ -51,9 +53,10 @@ function CryptoList() {
   // };
 
   // console.log(searchedCoins);
+  // console.log(zeroState());
 
   return (
-    <div className="flex flex-col min-h-screen pt-7 items-center dark:bg-gray-900">
+    <div className="flex flex-col pt-7 items-center dark:bg-gray-900">
       <h1 className="text-4xl text-amber-600   dark:text-yellow-300 font-medium tracking-wide">
         Cryptocurrencies by Market Cap
       </h1>
@@ -63,8 +66,7 @@ function CryptoList() {
         onChange={(e) => setSearch(e.target.value)}
         className="px-5 py-4 my-7 max-w-5xl w-full mx-auto outline-none border-2 dark:border-gray-500 dark:focus:border-amber-400 rounded-full dark:placeholder:focus:text-orange-200 focus:shadow-md dark:focus:shadow-orange-700 placeholder:tracking-wider transition-shadow-color duration-300 border-gray-200 focus:border-gray-800 focus:placeholder:text-gray-800 focus:shadow-gray-400"
       />
-      <Table className="max-w-7xl mx-auto text-xl">
-        {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
+      <Table className="max-w-7xl  mx-auto text-xl">
         <TableHeader>
           <TableRow className="flex flex-row items-center justify-between dark:hover:bg-gray-900 hover:bg-white">
             <TableHead className="w-[100px] ml-16">Coin</TableHead>
@@ -75,7 +77,10 @@ function CryptoList() {
             </div>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody className="flex flex-col">
+          {searchedCoins.length === 0 ? (
+            <p className="p-5 self-center">No cryptocurrencies found.</p>
+          ) : null}
           {searchedCoins.map((coin) => (
             <TableRow key={coin.id}>
               <Link

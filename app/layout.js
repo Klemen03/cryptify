@@ -4,6 +4,7 @@ import { ThemeProvider } from './components/theme-provider';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import CryptoContext from './components/context';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
           <ThemeProvider>
             <Header />
             {children}
+            <Footer />
           </ThemeProvider>
         </CryptoContext>
       </body>
