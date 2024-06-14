@@ -6,7 +6,6 @@ import { Crypto } from './context';
 import { trendingCoins } from '../config/api';
 import Link from 'next/link';
 import axios from 'axios';
-// import Image from 'next/image';
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -76,19 +75,17 @@ function Carousel() {
   };
 
   return (
-    <div>
-      <AliceCarousel
-        mouseTracking
-        infinite
-        autoPlayInterval={1000}
-        animationDuration={1500}
-        disableDotsControls
-        disableButtonsControls
-        responsive={responsive}
-        autoPlay
-        items={items}
-      />
-    </div>
+    <AliceCarousel
+      mouseTracking
+      infinite
+      autoPlayInterval={1000}
+      animationDuration={1500}
+      disableDotsControls
+      disableButtonsControls
+      responsive={responsive}
+      autoPlay
+      items={items}
+    />
   );
 }
 

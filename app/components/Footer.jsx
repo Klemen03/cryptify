@@ -17,7 +17,7 @@ const links = [
 ];
 function Footer() {
   return (
-    <footer className="p-4 pt-1 border-t-2 bg-black border-yellow-200 absolute bottom-0 left-0 right-0">
+    <footer className="bannerBackground p-4 pt-1 border-t-2  border-yellow-200 absolute bottom-0 left-0 right-0">
       <div className="flex flex-col items-center max-w-6xl gap-6 pb-5 mx-auto">
         <div className="flex flex-row justify-center gap-12  pt-6  w-full">
           {icons.map((icon) => (
