@@ -61,7 +61,10 @@ function Carousel() {
     0: {
       items: 2,
     },
-    512: {
+    768: {
+      items: 3,
+    },
+    1024: {
       items: 4,
     },
     2048: {

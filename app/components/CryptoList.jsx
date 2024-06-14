@@ -79,7 +79,6 @@ function CryptoList() {
           {searchedCoins.map((coin) => (
             <TableRow key={coin.id}>
               <Link
-                id={coin.id}
                 href={`/cryptocurrencies/${coin.id}`}
                 className="flex flex-row items-center justify-between p-3"
               >
