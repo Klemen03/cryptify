@@ -45,11 +45,11 @@ export function PaginationDemo({
             onClick={() => {
               handlePreviousPage();
             }}
-            className={` hover:text-yellow-400 rounded-full text-md
+            className={` dark:hover:text-yellow-400 border-2 border-white dark:border-gray-900 rounded-full text-md hover:bg-yellow-400 active:border-black dark:bg-gray-900 dark:active:border-yellow-400
 
               ${
                 disablePaginationPrevious
-                  ? 'text-gray-500 hover:text-gray-500 hover:bg-gray-900'
+                  ? 'dark:text-gray-500 active:border-whtie dark:hover:text-gray-500 dark:hover:bg-gray-900 bg-white hover:bg-white text-gray-300 hover:text-gray-300 dark:active:border-gray-900'
                   : ''
               }
             `}
@@ -58,11 +58,11 @@ export function PaginationDemo({
         {pages.map((page, idx) => (
           <PaginationItem key={idx}>
             <PaginationLink
-              className={` rounded-full hover:bg-gray-700 text-md hover:text-yellow-400
+              className={`rounded-full hover:bg-yellow-400 dark:hover:bg-gray-700 text-md dark:hover:text-yellow-400 
 
                 ${
                   currentPage === page
-                    ? 'text-yellow-400 border-2 border-yellow-400 bg-gray-700 rounded-full'
+                    ? 'dark:text-yellow-400 border-2 dark:border-yellow-400 dark:bg-gray-700 rounded-full bg-yellow-400 border-black'
                     : ''
                 }
 
@@ -76,11 +76,11 @@ export function PaginationDemo({
         <PaginationItem>
           <PaginationNext
             onClick={() => handleNextPage()}
-            className={` hover:text-yellow-400 rounded-full text-md
+            className={` dark:hover:text-yellow-400 border-2 border-white dark:border-gray-900 rounded-full text-md hover:bg-yellow-400 active:border-black dark:bg-gray-900 dark:active:border-yellow-400
 
               ${
                 disablePaginationNext
-                  ? 'text-gray-500 hover:text-gray-500 hover:bg-gray-900'
+                  ? 'dark:text-gray-500 active:border-whtie dark:hover:text-gray-500 dark:hover:bg-gray-900 bg-white hover:bg-white text-gray-300 hover:text-gray-300 dark:active:border-gray-900'
                   : ''
               }
             `}

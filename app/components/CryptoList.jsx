@@ -63,7 +63,7 @@ function CryptoList() {
   // console.log(zeroState());
 
   return (
-    <div className="flex flex-col pt-7 items-center dark:bg-gray-900">
+    <div className="flex flex-col pt-7 items-center dark:bg-gray-900 bg-white ">
       <h1 className="text-4xl text-amber-600   dark:text-yellow-300 font-medium tracking-wide">
         Cryptocurrencies by Market Cap
       </h1>
@@ -73,14 +73,18 @@ function CryptoList() {
         onChange={(e) => setSearch(e.target.value)}
         className="px-5 py-4 my-7 max-w-5xl w-full mx-auto outline-none border-2 dark:border-gray-500 dark:focus:border-amber-400 rounded-full dark:placeholder:focus:text-orange-200 focus:shadow-md dark:focus:shadow-orange-700 placeholder:tracking-wider transition-shadow-color duration-300 border-gray-200 focus:border-gray-800 focus:placeholder:text-gray-800 focus:shadow-gray-400"
       />
-      <Table className="max-w-7xl  mx-auto text-xl">
+      <Table className="max-w-7xl mt-10  mx-auto text-xl">
         <TableHeader>
-          <TableRow className="flex flex-row items-center justify-between dark:hover:bg-gray-900 hover:bg-white">
-            <TableHead className="w-[100px] ml-16">Coin</TableHead>
+          <TableRow className="flex flex- pt-4 rounded-t-3xl bg-yellow-300 dark:bg-yellow-800 text-lg justify-between hover:bg-yellow-800">
+            <TableHead className="w-[100px] ml-16 dark:text-white">
+              Coin
+            </TableHead>
             <div className="flex flex-row items-center gap-x-14">
-              <TableHead>Price</TableHead>
-              <TableHead>24h Change</TableHead>
-              <TableHead className="text-right">Market Cap</TableHead>
+              <TableHead className="dark:text-white">Price</TableHead>
+              <TableHead className="dark:text-white">24h Change</TableHead>
+              <TableHead className="text-right dark:text-white">
+                Market Cap
+              </TableHead>
             </div>
           </TableRow>
         </TableHeader>
