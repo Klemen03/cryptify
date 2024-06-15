@@ -12,12 +12,15 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import Link from 'next/link';
+import { PaginationDemo } from './PaginationDemo';
 
 function CryptoList() {
   const { currency, symbol } = useContext(Crypto);
   const [loading, setLoading] = useState(false);
   const [coinTable, setCoinTable] = useState([]);
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const fetchCoins = async () => {
     setLoading(true);
@@ -40,6 +43,9 @@ function CryptoList() {
       coin.symbol.toLowerCase().includes(search)
   );
 
+  const lastItemIndex = currentPage * itemsPerPage;
+  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const currentItems = searchedCoins.slice(firstItemIndex, lastItemIndex);
   // const zeroState = () => {
   //   if (searchedCoins.length === 0) return false;
   //   else return true;
@@ -78,10 +84,10 @@ function CryptoList() {
           </TableRow>
         </TableHeader>
         <TableBody className="flex flex-col">
-          {searchedCoins.length === 0 ? (
+          {currentItems.length === 0 ? (
             <p className="p-5 self-center">No cryptocurrencies found.</p>
           ) : null}
-          {searchedCoins.map((coin) => (
+          {currentItems.map((coin) => (
             <TableRow key={coin.id}>
               <Link
                 href={`/cryptocurrencies/${coin.id}`}
@@ -124,6 +130,14 @@ function CryptoList() {
           </TableRow>
         </TableFooter> */}
       </Table>
+      {currentItems.length >= 10 ? (
+        <PaginationDemo
+          totalItems={searchedCoins.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
     </div>
   );
 }
