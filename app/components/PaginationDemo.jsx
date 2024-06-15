@@ -15,8 +15,6 @@ export function PaginationDemo({
   currentPage,
   setCurrentPage,
 }) {
-  const [disablePrevious, setDisablePrevious] = useState(false);
-
   let pages = [];
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pages.push(i);
@@ -33,10 +31,12 @@ export function PaginationDemo({
     }
   };
 
-  const checkPreviousPage = currentPage === 1 ? true : false;
+  const disablePaginationPrevious = currentPage === 1 ? true : false;
 
-  console.log(checkPreviousPage);
-  console.log(currentPage);
+  const disablePaginationNext = currentPage === pages.length ? true : false;
+
+  // console.log(disablePrevNextBtn);
+  // console.log(currentPage);
 
   return (
     <Pagination className="pb-5 pt-8">
@@ -46,20 +46,28 @@ export function PaginationDemo({
             onClick={() => {
               handlePreviousPage();
             }}
-            className="rounded-full text-md"
+            className={` hover:text-yellow-400 rounded-full text-md
+
+              ${
+                disablePaginationPrevious
+                  ? 'text-gray-500 hover:text-gray-500 hover:bg-gray-900'
+                  : ''
+              }
+            `}
           />
         </PaginationItem>
         {pages.map((page, idx) => (
-          <PaginationItem
-            key={idx}
-            className={
-              currentPage === page
-                ? 'text-yellow-400 border-2 border-yellow-400 bg-gray-700 rounded-full'
-                : ''
-            }
-          >
+          <PaginationItem key={idx}>
             <PaginationLink
-              className="rounded-full hover:bg-gray-700 text-md"
+              className={` rounded-full hover:bg-gray-700 text-md hover:text-yellow-400
+
+                ${
+                  currentPage === page
+                    ? 'text-yellow-400 border-2 border-yellow-400 bg-gray-700 rounded-full'
+                    : ''
+                }
+
+              `}
               onClick={() => setCurrentPage(page)}
             >
               {page}
@@ -69,7 +77,14 @@ export function PaginationDemo({
         <PaginationItem>
           <PaginationNext
             onClick={() => handleNextPage()}
-            className="rounded-full text-md"
+            className={` hover:text-yellow-400 rounded-full text-md
+
+              ${
+                disablePaginationNext
+                  ? 'text-gray-500 hover:text-gray-500 hover:bg-gray-900'
+                  : ''
+              }
+            `}
           />
         </PaginationItem>
       </PaginationContent>
