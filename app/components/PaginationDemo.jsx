@@ -1,12 +1,13 @@
+'use client';
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
+import { useState } from 'react';
 
 export function PaginationDemo({
   totalItems,
@@ -14,6 +15,8 @@ export function PaginationDemo({
   currentPage,
   setCurrentPage,
 }) {
+  const [disablePrevious, setDisablePrevious] = useState(false);
+
   let pages = [];
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pages.push(i);
@@ -30,12 +33,19 @@ export function PaginationDemo({
     }
   };
 
+  const checkPreviousPage = currentPage === 1 ? true : false;
+
+  console.log(checkPreviousPage);
+  console.log(currentPage);
+
   return (
     <Pagination className="pb-5 pt-8">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            onClick={() => handlePreviousPage()}
+            onClick={() => {
+              handlePreviousPage();
+            }}
             className="rounded-full text-md"
           />
         </PaginationItem>
