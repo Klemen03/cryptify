@@ -46,6 +46,7 @@ function CryptoList() {
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentItems = searchedCoins.slice(firstItemIndex, lastItemIndex);
+
   // const zeroState = () => {
   //   if (searchedCoins.length === 0) return false;
   //   else return true;
@@ -130,14 +131,13 @@ function CryptoList() {
           </TableRow>
         </TableFooter> */}
       </Table>
-      {currentItems.length >= 10 ? (
-        <PaginationDemo
-          totalItems={searchedCoins.length}
-          itemsPerPage={itemsPerPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      ) : null}
+      {/* {currentItems.length >= 10 ? ( */}
+      <PaginationDemo
+        totalItems={searchedCoins.length}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 }

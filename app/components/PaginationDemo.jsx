@@ -1,4 +1,3 @@
-'use client';
 import {
   Pagination,
   PaginationContent,
@@ -7,7 +6,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { useState } from 'react';
 
 export function PaginationDemo({
   totalItems,
@@ -33,7 +31,8 @@ export function PaginationDemo({
 
   const disablePaginationPrevious = currentPage === 1 ? true : false;
 
-  const disablePaginationNext = currentPage === pages.length ? true : false;
+  const disablePaginationNext =
+    currentPage === pages.length || pages.length === 0 ? true : false;
 
   // console.log(disablePrevNextBtn);
   // console.log(currentPage);
