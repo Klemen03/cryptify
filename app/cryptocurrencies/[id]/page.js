@@ -9,7 +9,7 @@ function CryptocurrencyPage({ params }) {
   return (
     <div className="flex flex-col lg:flex-row">
       <SingleCoinInfo params={coinParams} />
-      <HistoricalChart />
+      <HistoricalChart params={coinParams} />
     </div>
   );
 }
