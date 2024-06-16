@@ -7,7 +7,7 @@ import { User } from 'lucide-react';
 
 function Header() {
   return (
-    <div className="flex justify-between p-6 items-center bg-white dark:bg-gray-900">
+    <div className="flex justify-between p-6 items-center bg-white dark:bg-gray-900 border-b-2 border-gray-600">
       <Logo />
       <div className="flex items-center gap-4">
         <CurrencyComboBox />

@@ -63,7 +63,7 @@ function CryptoList() {
   // console.log(zeroState());
 
   return (
-    <div className="flex flex-col pt-7 items-center dark:bg-gray-900 bg-white ">
+    <div className="flex flex-col pt-7 items-center dark:bg-gray-900 bg-white">
       <h1 className="text-4xl text-amber-600   dark:text-yellow-300 font-medium tracking-wide">
         Cryptocurrencies by Market Cap
       </h1>
