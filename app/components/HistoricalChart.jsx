@@ -10,7 +10,7 @@ import { Line } from 'react-chartjs-2';
 const HistoricalChart = ({ params }) => {
   const coinId = params.id;
   const [historicalData, setHistoricalData] = useState();
-  const [days, setDays] = useState(1);
+  const [days, setDays] = useState('1');
   const { currency, symbol } = useContext(Crypto);
 
   const filterDays = [
@@ -64,6 +64,7 @@ const HistoricalChart = ({ params }) => {
 
   const handleDays = (number) => {
     setDays(number);
+    console.log(number);
   };
 
   return (
@@ -78,7 +79,9 @@ const HistoricalChart = ({ params }) => {
                 labels: labels,
                 datasets: [
                   {
-                    label: `${coinId} price for past ${days} in ${currency}`,
+                    label: `${coinId} price for past ${days} ${
+                      days === '1' ? 'day' : 'days'
+                    } in the ${currency}`,
                     data: dataSets,
                     borderColor: 'rgb(252, 211, 77)',
                   },
@@ -91,14 +94,19 @@ const HistoricalChart = ({ params }) => {
           </>
         )}
       </div>
-      <div className="flex gap-10">
+      <div className="flex gap-10 mt-5 ml-5">
         {filterDays.map((day) => (
           <Button
             onClick={() => handleDays(day.daysCount)}
-            className="w-24 rounded-full"
+            className={`w-24 text-black text-md rounded-full bg-gray-100 hover:bg-amber-500 active:bg-amber-600 active:border-2 active:border-blac dark:bg-gray-600 dark:text-white dark:hover:bg-amber-600 ${
+              day.daysCount === days
+                ? 'bg-amber-500 border-2 border-black dark:bg-amber-600 dark:border-white'
+                : ''
+            }`}
             key={day.daysCount}
           >
-            {day.daysCount} days
+            {day.daysCount}
+            {day.daysCount === '1' ? ' day' : ' days'}
           </Button>
         ))}
       </div>
