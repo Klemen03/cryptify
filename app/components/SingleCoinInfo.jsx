@@ -38,7 +38,9 @@ const SingleCoinInfo = ({ params }) => {
   return (
     <div className="flex flex-col text-lg lg:w-1/4 items-center w-full mt-6 p-6 lg:border-r-2 lg:border-gray-600">
       <img src={coin.image?.large} className="sm:w-[200px] w-[150px]" />
-      <h1 className="text-3xl font-semibold tracking-wider">{coin.name}</h1>
+      <h1 className="text-3xl pb-10 font-semibold tracking-wider">
+        {coin.name}
+      </h1>
 
       <p>{slicedCoinDescription?.slice(0, 2)}.</p>
       <div className="flex flex-col gap-5 self-start pt-6 tracking-wider">

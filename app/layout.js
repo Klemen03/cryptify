@@ -18,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="select-none">
+    <html lang="en" className="select-none w-screen">
       <body className={montserrat.className}>
         <CryptoContext>
           <ThemeProvider>
