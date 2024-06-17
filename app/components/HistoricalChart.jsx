@@ -68,14 +68,14 @@ const HistoricalChart = ({ params }) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full p-1">
-      <div className="w-full sm:p-10 min-h-1/2">
+    <div className="flex flex-col w-screen">
+      <div className="h-80 p-1">
         {!historicalData ? (
           <p>Loading</p>
         ) : (
           <>
             <Line
-              className="w-full sm:h-4/5"
+              className=""
               data={{
                 labels: labels,
                 datasets: [
@@ -85,6 +85,7 @@ const HistoricalChart = ({ params }) => {
                     } in the ${currency}`,
                     data: dataSets,
                     borderColor: 'rgb(252, 211, 77)',
+                    fill: false,
                   },
                 ],
               }}
@@ -92,16 +93,28 @@ const HistoricalChart = ({ params }) => {
                 elements: { point: { radius: 1 } },
                 responsive: true,
                 maintainAspectRatio: false,
+                scales: {
+                  x: {
+                    grid: {
+                      display: false,
+                    },
+                  },
+                  y: {
+                    grid: {
+                      display: false,
+                    },
+                  },
+                },
               }}
             />
           </>
         )}
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 gap-x-16">
+      <div className="grid self-center grid-cols-2 lg:grid-cols-4 gap-3 gap-x-10 pt-2">
         {filterDays.map((day) => (
           <Button
             onClick={() => handleDays(day.daysCount)}
-            className={`w-24 text-black text-md rounded-full bg-gray-100 hover:bg-amber-500 active:bg-amber-600 active:border-2 active:border-blac dark:bg-gray-600 dark:text-white dark:hover:bg-amber-600 ${
+            className={`w-24 text-black text-md rounded-full bg-gray-100 hover:bg-amber-500 active:bg-amber-600 active:border-2 active:border-black dark:bg-gray-600 dark:text-white dark:hover:bg-amber-600 ${
               day.daysCount === days
                 ? 'bg-amber-500 border-2 border-black dark:bg-amber-600 dark:border-white'
                 : ''

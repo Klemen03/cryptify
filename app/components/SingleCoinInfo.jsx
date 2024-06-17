@@ -55,9 +55,6 @@ const SingleCoinInfo = ({ params }) => {
           {coin.market_data?.market_cap[loweredCurrency].toLocaleString()}M
         </p>
       </div>
-      <Button className="rounded-full mt-10 lg:self-end">
-        ADD TO WATCHLIST
-      </Button>
     </div>
   );
 };
