@@ -68,13 +68,14 @@ const HistoricalChart = ({ params }) => {
   };
 
   return (
-    <div className="w-3/4">
-      <div>
+    <div className="flex flex-col items-center w-full p-1">
+      <div className="w-full sm:p-10 min-h-1/2">
         {!historicalData ? (
           <p>Loading</p>
         ) : (
           <>
             <Line
+              className="w-full sm:h-4/5"
               data={{
                 labels: labels,
                 datasets: [
@@ -89,12 +90,14 @@ const HistoricalChart = ({ params }) => {
               }}
               options={{
                 elements: { point: { radius: 1 } },
+                responsive: true,
+                maintainAspectRatio: false,
               }}
             />
           </>
         )}
       </div>
-      <div className="flex gap-10 mt-5 ml-5">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 gap-x-16">
         {filterDays.map((day) => (
           <Button
             onClick={() => handleDays(day.daysCount)}
