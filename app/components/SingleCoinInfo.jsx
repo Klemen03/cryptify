@@ -57,6 +57,13 @@ const SingleCoinInfo = ({ params }) => {
           {coin.market_data?.market_cap[loweredCurrency].toLocaleString()}M
         </p>
       </div>
+      <Button
+        className="rounded-full self-center mt-4 mr-3 mb-1 w-52 bg-green-500 text-white font-semibold tracking-wider 
+      hover:border-2 hover:border-green-300
+      hover:bg-green-700 active:bg-green-400 active:border-2 active:border-green-700"
+      >
+        ADD TO WATCHLIST
+      </Button>
     </div>
   );
 };

@@ -14,10 +14,10 @@ const HistoricalChart = ({ params }) => {
   const { currency, symbol } = useContext(Crypto);
 
   const filterDays = [
-    { daysCount: '1' },
-    { daysCount: '30' },
-    { daysCount: '180' },
-    { daysCount: '365' },
+    { label: '24 Hours', daysCount: '1' },
+    { label: '30 Days', daysCount: '30' },
+    { label: '3 Months', daysCount: '90' },
+    { label: '1 Year', daysCount: '365' },
   ];
 
   const fetchHistoricalData = async () => {
@@ -68,14 +68,13 @@ const HistoricalChart = ({ params }) => {
   };
 
   return (
-    <div className="flex flex-col w-screen">
-      <div className="h-80 p-1">
+    <div className="flex flex-col w-full">
+      <div className="h-80 p-1 lg:h-4/5">
         {!historicalData ? (
           <p>Loading</p>
         ) : (
           <>
             <Line
-              className=""
               data={{
                 labels: labels,
                 datasets: [
@@ -110,19 +109,18 @@ const HistoricalChart = ({ params }) => {
           </>
         )}
       </div>
-      <div className="grid self-center grid-cols-2 lg:grid-cols-4 gap-3 gap-x-10 pt-2">
+      <div className="grid self-center lg:self-start grid-cols-2 lg:grid-cols-4 gap-3 gap-x-10 pt-2">
         {filterDays.map((day) => (
           <Button
             onClick={() => handleDays(day.daysCount)}
-            className={`w-24 text-black text-md rounded-full bg-gray-100 hover:bg-amber-500 active:bg-amber-600 active:border-2 active:border-black dark:bg-gray-600 dark:text-white dark:hover:bg-amber-600 ${
+            className={`text-black text-md rounded-full bg-gray-100 hover:bg-amber-500 active:bg-amber-600 active:border-2 active:border-black dark:bg-gray-600 dark:text-white dark:hover:bg-amber-600 ${
               day.daysCount === days
                 ? 'bg-amber-500 border-2 border-black dark:bg-amber-600 dark:border-white'
                 : ''
             }`}
             key={day.daysCount}
           >
-            {day.daysCount}
-            {day.daysCount === '1' ? ' day' : ' days'}
+            {day.label}
           </Button>
         ))}
       </div>
