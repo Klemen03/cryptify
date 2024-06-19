@@ -38,11 +38,11 @@ const SingleCoinInfo = ({ params }) => {
   return (
     <div className="flex flex-col text-lg lg:w-1/4 items-center w-full mt-6 p-6 lg:border-r-2 lg:border-gray-600">
       <img src={coin.image?.large} className="sm:w-[200px] w-[150px]" />
-      <h1 className="text-3xl pb-10 font-semibold tracking-wider">
+      <h1 className="text-3xl pb-10 font-semibold tracking-wider pt-5">
         {coin.name}
       </h1>
 
-      <p>{slicedCoinDescription?.slice(0, 2)}.</p>
+      <p>{slicedCoinDescription?.slice(0, 2)}</p>
       <div className="flex flex-col gap-5 self-start pt-6 tracking-wider">
         <p>
           <strong className="text-yellow-700">Rank:</strong>{' '}
@@ -57,13 +57,13 @@ const SingleCoinInfo = ({ params }) => {
           {coin.market_data?.market_cap[loweredCurrency].toLocaleString()}M
         </p>
       </div>
-      <Button
+      {/* <Button
         className="rounded-full self-center mt-4 mr-3 mb-1 w-52 bg-green-500 text-white font-semibold tracking-wider 
       hover:border-2 hover:border-green-300
       hover:bg-green-700 active:bg-green-400 active:border-2 active:border-green-700"
       >
         ADD TO WATCHLIST
-      </Button>
+      </Button> */}
     </div>
   );
 };

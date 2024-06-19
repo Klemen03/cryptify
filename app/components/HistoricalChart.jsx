@@ -109,7 +109,7 @@ const HistoricalChart = ({ params }) => {
           </>
         )}
       </div>
-      <div className="grid self-center pl-3 lg:self-start grid-cols-2 lg:grid-cols-4 gap-3 gap-x-10 pt-2">
+      <div className="grid self-center pl-3 pb-10 lg:self-start grid-cols-2 lg:grid-cols-4 gap-3 gap-x-10 pt-2">
         {filterDays.map((day) => (
           <Button
             onClick={() => handleDays(day.daysCount)}
