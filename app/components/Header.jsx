@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from './Logo';
 import { DarkModeBtn } from './DarkModeBtn';
 import { CurrencyComboBox } from './CurrencyComboBox';
-import { User } from 'lucide-react';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 function Header() {
   return (
@@ -12,7 +12,12 @@ function Header() {
       <div className="flex items-center gap-4">
         <CurrencyComboBox />
         <DarkModeBtn />
-        <User />
+        <SignedOut>
+          <SignInButton className="bg-amber-400 py-2 px-3 text-sm rounded-full hover:bg-amber-500" />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </div>
   );

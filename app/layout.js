@@ -5,6 +5,13 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import CryptoContext from './components/context';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -18,16 +25,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="select-none w-screen">
-      <body className={montserrat.className}>
-        <CryptoContext>
-          <ThemeProvider>
-            <Header />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </CryptoContext>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="select-none w-screen">
+        <body className={montserrat.className}>
+          <CryptoContext>
+            <ThemeProvider>
+              <Header />
+              {children}
+              <Footer />
+            </ThemeProvider>
+          </CryptoContext>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

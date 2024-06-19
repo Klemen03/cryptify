@@ -45,7 +45,7 @@ const SingleCoinInfo = ({ params }) => {
       <p>{slicedCoinDescription?.slice(0, 2)}</p>
       <div className="flex flex-col gap-5 self-start pt-6 tracking-wider">
         <p>
-          <strong className="text-yellow-700">Rank:</strong>{' '}
+          <strong className="text-yellow-700">Rank:</strong> #
           {coin.market_cap_rank}
         </p>
         <p>
