@@ -78,6 +78,13 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  font-size: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 body {

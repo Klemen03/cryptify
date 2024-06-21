@@ -12,12 +12,12 @@ export default function DarkModeBtn() {
     <div>
       {currentTheme === 'dark' ? (
         <Moon
-          className="text-3xl cursor-pointer hover:text-amber-500"
+          className=" cursor-pointer hover:text-amber-500"
           onClick={() => setTheme('light')}
         />
       ) : (
         <Sun
-          className="text-3xl cursor-pointer hover:text-amber-500"
+          className=" cursor-pointer hover:text-amber-500"
           onClick={() => setTheme('dark')}
         />
       )}

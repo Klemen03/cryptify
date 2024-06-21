@@ -64,22 +64,22 @@ function CryptoList() {
 
   return (
     <div className="flex flex-col pt-7 items-center dark:bg-gray-900 bg-white">
-      <h1 className="text-4xl text-amber-600 text-center   dark:text-yellow-300 font-medium tracking-wide">
+      <h1 className="text-4xl text-amber-600 text-center mx-16 dark:text-yellow-300 font-medium tracking-wide">
         Cryptocurrencies by Market Cap
       </h1>
       <input
         placeholder="Search For a Crypto Currency..."
         type="text"
         onChange={(e) => setSearch(e.target.value)}
-        className="px-5 py-4 my-7 max-w-5xl w-full mx-auto outline-none border-2 dark:border-gray-500 dark:focus:border-amber-400 rounded-full dark:placeholder:focus:text-orange-200 focus:shadow-md dark:focus:shadow-orange-700 placeholder:tracking-wider transition-shadow-color duration-300 border-gray-200 focus:border-gray-800 focus:placeholder:text-gray-800 focus:shadow-gray-400"
+        className="px-5 py-4 my-7 max-w-5xl w-full outline-none border-2 dark:border-gray-500 dark:focus:border-amber-400 rounded-full dark:placeholder:focus:text-orange-200 focus:shadow-md dark:focus:shadow-orange-700 placeholder:tracking-wider transition-shadow-color duration-300 border-gray-200 focus:border-gray-800 focus:placeholder:text-gray-800 focus:shadow-gray-400"
       />
       <Table className="max-w-7xl mt-10  mx-auto text-xl">
         <TableHeader>
-          <TableRow className="flex flex- pt-4 rounded-t-3xl bg-yellow-300 dark:bg-yellow-800 text-lg justify-between hover:bg-yellow-800">
-            <TableHead className="w-[100px] ml-16 dark:text-white">
+          <TableRow className="flex flex-row pt-4 rounded-t-3xl bg-yellow-300 dark:bg-yellow-800 text-lg justify-between hover:bg-yellow-800">
+            <TableHead className="w-[100px] lg:ml-16 ml-8 dark:text-white">
               Coin
             </TableHead>
-            <div className="flex flex-row items-center gap-x-14">
+            <div className="flex flex-row text-nowrap items-center lg:gap-x-14 gap-x-8">
               <TableHead className="dark:text-white">Price</TableHead>
               <TableHead className="dark:text-white">24h Change</TableHead>
               <TableHead className="text-right dark:text-white">
@@ -96,11 +96,11 @@ function CryptoList() {
             <TableRow key={coin.id}>
               <Link
                 href={`/cryptocurrencies/${coin.id}`}
-                className="flex flex-row items-center justify-between p-3"
+                className="flex flex-row items-center justify-between m-2"
               >
-                <TableCell className="font-medium flex">
+                <TableCell className="font-medium flex ml-0 pl-0">
                   <img
-                    className="w-[50px] h-[50px]"
+                    className="lg:w-[50px] lg:h-[50px] h-[30px] w-[30px]"
                     src={coin.image}
                     alt={coin.name}
                   />
@@ -119,7 +119,7 @@ function CryptoList() {
                     {Math.abs(coin.price_change_percentage_24h).toFixed(2)}
                     {'%'}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="p-0">
                     {coin.market_cap.toLocaleString()}
                     {'M'}
                   </TableCell>
